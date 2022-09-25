@@ -1,6 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
-public class GridFrame1 extends Frame
+public class GridFrame extends Frame
 {
   static boolean[] grid;
   static int numbRow;
@@ -8,7 +8,7 @@ public class GridFrame1 extends Frame
   int totalMines=0;
   static int totalSafe=0;
   static JFrame f = new JFrame();
-  GridFrame1(int numRows, int numCols, double difficulty)
+  GridFrame(int numRows, int numCols, double difficulty)
   {
     numbRow = numRows;
     numbCol = numCols;
@@ -25,14 +25,14 @@ public class GridFrame1 extends Frame
     {
       if (Math.random() <= difficulty)
       {
-        f.add(new Box1(true,i));
+        f.add(new Box(true,i));
         gridArray[i] = (true);
      //   System.out.println("true");
         totalMines++;
       }
       else
       {
-        f.add(new Box1(false,i));
+        f.add(new Box(false,i));
         gridArray[i] = (false);
         totalSafe++;
       //  System.out.println("false");
