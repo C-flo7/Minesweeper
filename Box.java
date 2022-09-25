@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-public class Box1 extends Button implements MouseListener 
+public class Box extends Button implements MouseListener 
 {
   boolean checked = false;
   boolean mine = false;
@@ -9,14 +9,14 @@ public class Box1 extends Button implements MouseListener
   static int safeClicks=0;
   double difficulty;
   char label;
-  public Box1 (boolean isMine, int x)
+  public Box (boolean isMine, int x)
   {
     this.setBackground(new Color (200,200,255));
     this.addMouseListener(this);
     mine = isMine;
     xCoord = x;
   }
-  public Box1 (String diff)
+  public Box (String diff)
   {
     this.addMouseListener(this);
     if (diff.equals("Easy"))
@@ -54,8 +54,8 @@ public class Box1 extends Button implements MouseListener
   {
     if (label == 'e' || label == 'm' || label == 'h')
     {
-      Game1.fi.setVisible(false);
-      Game1.createGame(difficulty);
+      Game.fi.setVisible(false);
+      Game.createGame(difficulty);
     }
     //System.out.println(xCoord + "," + yCoord);
     else if (SwingUtilities.isLeftMouseButton(click) && !checked)
@@ -68,21 +68,21 @@ public class Box1 extends Button implements MouseListener
         this.removeMouseListener(this);
         System.out.println("you lose");
         Thread.sleep(1000);
-        GridFrame1.f.setVisible(false);
+        GridFrame.f.setVisible(false);
       }
       catch(InterruptedException ex) 
       {
         Thread.currentThread().interrupt();
       }
-      else if (GridFrame1.getTotalSafe() <= safeClicks  + 1)
+      else if (GridFrame.getTotalSafe() <= safeClicks  + 1)
       {
         this.removeMouseListener(this);
         System.out.println("you win");
-        GridFrame1.f.setVisible(false);
+        GridFrame.f.setVisible(false);
       }
       else
       {
-        setLabel("" + GridFrame1.getNumMines(xCoord));
+        setLabel("" + GridFrame.getNumMines(xCoord));
         this.setBackground(Color.GRAY);
         setCheck(true);
         safeClicks++;
