@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class test1
+public class test
 {
   public static void main(String args[])
   {  
@@ -12,6 +12,6 @@ public class test1
       System.out.println("Enter a row/collumn size. (Greater than 0)");
       size = sc.nextInt();
     }
-    new Game1(size,size);
+    new Game(size,size);
   }
 }  
